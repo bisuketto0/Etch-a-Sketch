@@ -28,3 +28,10 @@ function createGrid() {
     }
   }
 }
+
+//Delete the grid
+function deleteGrid() {
+  const gridCtn = document.querySelector('.grid-container')
+  const gridSqrNum = gridCtn.childElementCount
+  if (gridSqrNum > 0) gridCtn.innerHTML = ''
+}
