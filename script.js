@@ -35,3 +35,10 @@ function deleteGrid() {
   const gridSqrNum = gridCtn.childElementCount
   if (gridSqrNum > 0) gridCtn.innerHTML = ''
 }
+
+function init() {
+  deleteGrid()
+  createGrid()
+}
+
+init()
