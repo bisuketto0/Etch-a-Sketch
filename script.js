@@ -1,7 +1,8 @@
+//Number of rows and columns
+let gridSize = 16
 //Create the grid
-function createGrid() {
+function createGrid(gridSize) {
   const gridCtn = document.querySelector('.grid-container')
-  let gridSize = 16
   //Set number of rows and columns
   gridCtn.style.cssText = 
  `grid-template-rows: repeat(${gridSize}, auto);
@@ -9,12 +10,12 @@ function createGrid() {
   //Create the grid squares
   for (let i = 0; i < gridSize ** 2; i++) {
     const gridSqr = document.createElement('div')
-    if ((i + 1) == gridSize**2) {
+    if ((i + 1) == gridSize ** 2) {
       gridSqr.classList.add('grid')
       gridSqr.classList.add('grid-border-bottom')
       gridSqr.classList.add('grid-border-right')
       gridCtn.appendChild(gridSqr)
-    }  else if ((i + 1) > (gridSize**2 - gridSize)) {
+    }  else if ((i + 1) > (gridSize ** 2 - gridSize)) {
       gridSqr.classList.add('grid')
       gridSqr.classList.add('grid-border-bottom')
       gridCtn.appendChild(gridSqr)
@@ -38,7 +39,19 @@ function deleteGrid() {
 
 function init() {
   deleteGrid()
-  createGrid()
+  createGrid(gridSize)
+  listen()
 }
 
 init()
+
+//Listens to events
+function listen() {
+  //Listen to the range value and create grid
+  const gridRange = document.querySelector('.grid-range')
+  gridRange.addEventListener('mouseup', gridValue => {
+    gridSize = gridValue.target.value
+    deleteGrid()
+    createGrid(gridSize)
+  })
+}
