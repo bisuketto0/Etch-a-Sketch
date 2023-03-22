@@ -1,10 +1,10 @@
+const gridCtn = document.querySelector('.grid-container')
+
 //Number of rows and columns
 let gridSize = 16
 
 //Create the grid
 function createGrid(gridSize) {
-  const gridCtn = document.querySelector('.grid-container')
-
   //Set number of rows and columns
   gridCtn.style.cssText = 
  `grid-template-rows: repeat(${gridSize}, auto);
@@ -44,9 +44,19 @@ function init() {
   deleteGrid()
   createGrid(gridSize)
   listen()
+  listenRange()
 }
 
 init()
+
+function listenRange() {
+  //Listen to the range value and create grid
+  const gridRange = document.querySelector('.grid-range')
+  gridRange.addEventListener('mouseup', gridValue => {
+    gridSize = gridValue.target.value
+    reInit()
+  })
+}
 
 function reInit() {
   deleteGrid()
@@ -67,13 +77,6 @@ function draw(e) {
 
 //Listens to events
 function listen() {
-  //Listen to the range value and create grid
-  const gridRange = document.querySelector('.grid-range')
-  gridRange.addEventListener('mouseup', gridValue => {
-    gridSize = gridValue.target.value
-    reInit()
-  })
-
   //Listen for drawing on the grid
   const gridSquares = document.querySelectorAll('.grid')
   gridSquares.forEach(element => {
