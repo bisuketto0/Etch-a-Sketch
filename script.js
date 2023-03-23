@@ -64,14 +64,17 @@ function reInit() {
   listen()
 }
 
+//set color
+let color = '#000000'
+
 function drawClick(e) {
   e.preventDefault(e)
-  e.target.classList.add('colored')
+  e.target.style.backgroundColor = color
 }
 
 function draw(e) {
   if (e.buttons) {
-    e.target.classList.add('colored')
+    e.target.style.backgroundColor = color
   }
 }
 
@@ -82,5 +85,11 @@ function listen() {
   gridSquares.forEach(element => {
     element.addEventListener('mousedown', drawClick)
     element.addEventListener('mouseenter', draw)
+  })
+
+  //Listen for color picker
+  const colorPicker = document.querySelector('#color-picker')
+  colorPicker.addEventListener('input', e => {
+    color = e.target.value
   })
 }
