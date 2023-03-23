@@ -112,6 +112,7 @@ function listen() {
 
   buttons.forEach(button => {
     button.addEventListener('click', button => {
+      //Select mode
       if (button.target.id === 'eraser') {
         pen = false
         eraser = true
@@ -132,6 +133,28 @@ function listen() {
         eraser = false
         rainbow = false
         shading = false
+      }
+      //Select button
+      if (pen) {
+        buttons[0].className = 'selected'
+        buttons[1].className = ''
+        buttons[2].className = ''
+        buttons[3].className = ''
+      } else if (eraser) {
+        buttons[0].className = ''
+        buttons[1].className = 'selected'
+        buttons[2].className = ''
+        buttons[3].className = ''
+      } else if (rainbow) {
+        buttons[0].className = ''
+        buttons[1].className = ''
+        buttons[2].className = 'selected'
+        buttons[3].className = ''
+      } else if (shading) {
+        buttons[0].className = ''
+        buttons[1].className = ''
+        buttons[2].className = ''
+        buttons[3].className = 'selected'
       }
     })
   })

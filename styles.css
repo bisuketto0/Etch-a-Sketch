@@ -16,3 +16,18 @@
 .grid-border-right {
   border-right: 1px solid grey;
 }
+
+.controls {
+  margin-bottom: 1em;
+}
+
+button {
+  border: none;
+  padding: 6px 18px;
+  background-color: lightskyblue;
+}
+
+.selected {
+  background-color: rgb(106, 160, 194);
+  border: 1px solid rgb(150, 150, 150);
+}
