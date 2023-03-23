@@ -75,12 +75,20 @@ let shading = false
 
 function drawClick(e) {
   e.preventDefault(e)
-  e.target.style.backgroundColor = color
+  if (pen) {
+    e.target.style.backgroundColor = color
+  } else if (eraser) {
+    e.target.style.backgroundColor = 'white'
+  }
 }
 
 function draw(e) {
   if (e.buttons) {
-    e.target.style.backgroundColor = color
+    if (pen) {
+      e.target.style.backgroundColor = color
+    } else if (eraser) {
+      e.target.style.backgroundColor = 'white'
+    }
   }
 }
 
@@ -98,8 +106,34 @@ function listen() {
   colorPicker.addEventListener('input', e => {
     color = e.target.value
   })
-}
 
-function toggleButtons() {
+  //Listen for buttons
+  const buttons = document.querySelectorAll('button')
 
+  buttons.forEach(button => {
+    button.addEventListener('click', button => {
+      if (button.target.id === 'eraser') {
+        pen = false
+        eraser = true
+        rainbow = false
+        shading = false
+      } else if (button.target.id === 'rainbow') {
+        pen = false
+        eraser = false
+        rainbow = true
+        shading = false
+      } else if (button.target.id ==='shading') {
+        pen = false
+        eraser = false
+        rainbow = false
+        shading = true
+      } else {
+        pen = true
+        eraser = false
+        rainbow = false
+        shading = false
+      }
+    })
+  })
+  
 }
