@@ -64,8 +64,14 @@ function reInit() {
   listen()
 }
 
-//set color
+//set default color
 let color = '#000000'
+
+//set default buttons
+let pen = true
+let eraser = false
+let rainbow = false
+let shading = false
 
 function drawClick(e) {
   e.preventDefault(e)
@@ -92,4 +98,8 @@ function listen() {
   colorPicker.addEventListener('input', e => {
     color = e.target.value
   })
+}
+
+function toggleButtons() {
+
 }
