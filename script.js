@@ -49,6 +49,12 @@ function init() {
 
 init()
 
+function reInit() {
+  deleteGrid()
+  createGrid(gridSize)
+  listen()
+}
+
 function listenRange() {
   //Listen to the range value and create grid
   const gridRange = document.querySelector('.grid-range')
@@ -56,12 +62,6 @@ function listenRange() {
     gridSize = gridValue.target.value
     reInit()
   })
-}
-
-function reInit() {
-  deleteGrid()
-  createGrid(gridSize)
-  listen()
 }
 
 //set default color
