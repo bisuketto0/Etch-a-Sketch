@@ -79,6 +79,9 @@ function drawClick(e) {
     e.target.style.backgroundColor = color
   } else if (eraser) {
     e.target.style.backgroundColor = 'white'
+  } else if (rainbow) {
+    let rainbowColor = getRandomColor()
+    e.target.style.backgroundColor = rainbowColor
   }
 }
 
