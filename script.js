@@ -64,15 +64,16 @@ function listenRange() {
   })
 }
 
-//set default color
+//Set default color
 let color = '#000000'
 
-//set default buttons
+//Set default buttons
 let pen = true
 let eraser = false
 let rainbow = false
 let shading = false
 
+//Draw on the first click
 function drawClick(e) {
   e.preventDefault(e)
   if (pen) {
@@ -82,6 +83,7 @@ function drawClick(e) {
   }
 }
 
+//Draw when hovering and mousedown
 function draw(e) {
   if (e.buttons) {
     if (pen) {
