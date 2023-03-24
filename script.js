@@ -90,8 +90,8 @@ function draw(e) {
     } else if (eraser) {
       e.target.style.backgroundColor = 'white'
     } else if (rainbow) {
-      //onmousedown choose a random color and paint
-      //onmouseenter choose a random color and paint
+      let rainbowColor = getRandomColor()
+      e.target.style.backgroundColor = rainbowColor
     }
   }
 }
