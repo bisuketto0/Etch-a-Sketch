@@ -35,7 +35,6 @@ function createGrid(gridSize) {
 
 //Delete the grid
 function deleteGrid() {
-  const gridCtn = document.querySelector('.grid-container')
   const gridSqrNum = gridCtn.childElementCount
   if (gridSqrNum > 0) gridCtn.innerHTML = ''
 }
@@ -90,8 +89,18 @@ function draw(e) {
       e.target.style.backgroundColor = color
     } else if (eraser) {
       e.target.style.backgroundColor = 'white'
+    } else if (rainbow) {
+      //onmousedown choose a random color and paint
+      //onmouseenter choose a random color and paint
     }
   }
+}
+
+function getRandomColor() {
+  let r = Math.floor(Math.random() * 256)
+  let g = Math.floor(Math.random() * 256)
+  let b = Math.floor(Math.random() * 256)
+  return `rgb(${r}, ${g}, ${b})`
 }
 
 //Listens to events
