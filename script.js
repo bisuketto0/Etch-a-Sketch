@@ -125,6 +125,13 @@ function getRandomColor() {
   return `rgb(${r}, ${g}, ${b})`
 }
 
+function clear() {
+  const gridSquares = document.querySelectorAll('.grid')
+  gridSquares.forEach(gridSqr => {
+    gridSqr.style.backgroundColor = 'rgb(255, 255, 255)'
+  })
+}
+
 //Listens to events
 function listen() {
   //Listen for drawing on the grid
@@ -139,6 +146,10 @@ function listen() {
   colorPicker.addEventListener('input', e => {
     color = e.target.value
   })
+
+  //Listen for clear button
+  const clearBtn = document.querySelector('#clear')
+  clearBtn.addEventListener('click', clear)
 
   //Listen for buttons
   const buttons = document.querySelectorAll('button')
@@ -161,7 +172,7 @@ function listen() {
         eraser = false
         rainbow = false
         shading = true
-      } else {
+      } else if (button.target.id === 'pen') {
         pen = true
         eraser = false
         rainbow = false
