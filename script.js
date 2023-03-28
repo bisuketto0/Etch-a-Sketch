@@ -84,6 +84,17 @@ function drawClick(e) {
   } else if (rainbow) {
     let rainbowColor = getRandomColor()
     e.target.style.backgroundColor = rainbowColor
+  } else if (shading) {
+    //
+    const sqrColor = e.target.style.backgroundColor
+    const sqrColors = sqrColor.slice(4, sqrColor.length - 1).split(',')
+    let R = sqrColors[0], 
+    G = sqrColors[1], 
+    B = sqrColors[2]
+    const r = Math.ceil(R * 0.1), 
+    g = Math.ceil(G * 0.1), 
+    b = Math.ceil(B * 0.1)
+    e.target.style.backgroundColor = `rgb(${R - r }, ${G - g}, ${B - b})`
   }
 }
 
@@ -99,6 +110,16 @@ function draw(e) {
     } else if (rainbow) {
       let rainbowColor = getRandomColor()
       e.target.style.backgroundColor = rainbowColor
+    } else if (shading) {
+      const sqrColor = e.target.style.backgroundColor
+      const sqrColors = sqrColor.slice(4, sqrColor.length - 1).split(',')
+      let R = sqrColors[0], 
+      G = sqrColors[1], 
+      B = sqrColors[2]
+      const r = Math.ceil(R * 0.1), 
+      g = Math.ceil(G * 0.1), 
+      b = Math.ceil(B * 0.1)
+      e.target.style.backgroundColor = `rgb(${R - r}, ${G - g}, ${B - b})`
     }
   }
 }
