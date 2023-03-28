@@ -13,21 +13,19 @@ function createGrid(gridSize) {
   //Create the grid squares
   for (let i = 0; i < gridSize ** 2; i++) {
     const gridSqr = document.createElement('div')
+    gridSqr.style.backgroundColor = 'rgb(255, 255, 255)'
+    gridSqr.classList.add('grid')
     if ((i + 1) == gridSize ** 2) {
-      gridSqr.classList.add('grid')
       gridSqr.classList.add('grid-border-bottom')
       gridSqr.classList.add('grid-border-right')
       gridCtn.appendChild(gridSqr)
     }  else if ((i + 1) > (gridSize ** 2 - gridSize)) {
-      gridSqr.classList.add('grid')
       gridSqr.classList.add('grid-border-bottom')
       gridCtn.appendChild(gridSqr)
     } else if ((i + 1) % gridSize == 0) {
-      gridSqr.classList.add('grid')
       gridSqr.classList.add('grid-border-right')
       gridCtn.appendChild(gridSqr)
     } else {
-      gridSqr.classList.add('grid')
       gridCtn.appendChild(gridSqr)
     }
   }
@@ -78,9 +76,7 @@ function drawClick(e) {
   if (pen) {
     e.target.style.backgroundColor = color
   } else if (eraser) {
-    if (e.target.style.backgroundColor) {
-      e.target.style.backgroundColor = null
-    }
+    e.target.style.backgroundColor = 'rbg(255, 255, 255)'
   } else if (rainbow) {
     let rainbowColor = getRandomColor()
     e.target.style.backgroundColor = rainbowColor
@@ -104,9 +100,7 @@ function draw(e) {
     if (pen) {
       e.target.style.backgroundColor = color
     } else if (eraser) {
-      if (e.target.style.backgroundColor) {
-        e.target.style.backgroundColor = null
-      }
+      e.target.style.backgroundColor = 'rgb(255, 255, 255)'
     } else if (rainbow) {
       let rainbowColor = getRandomColor()
       e.target.style.backgroundColor = rainbowColor
