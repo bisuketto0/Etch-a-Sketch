@@ -55,8 +55,10 @@ function reInit() {
 function listenRange() {
   //Listen to the range value and create grid
   const gridRange = document.querySelector('.grid-range')
-  gridRange.addEventListener('mouseup', gridValue => {
-    gridSize = gridValue.target.value
+  gridRange.addEventListener('mouseup', value => {
+    gridSize = value.target.value
+    const gridValue = document.querySelector('.grid-range-value')
+    gridValue.textContent = `${gridSize} X ${gridSize}`
     reInit()
   })
 }
@@ -76,12 +78,11 @@ function drawClick(e) {
   if (pen) {
     e.target.style.backgroundColor = color
   } else if (eraser) {
-    e.target.style.backgroundColor = 'rbg(255, 255, 255)'
+    e.target.style.backgroundColor = 'rgb(255, 255, 255)'
   } else if (rainbow) {
     let rainbowColor = getRandomColor()
     e.target.style.backgroundColor = rainbowColor
   } else if (shading) {
-    //
     const sqrColor = e.target.style.backgroundColor
     const sqrColors = sqrColor.slice(4, sqrColor.length - 1).split(',')
     let R = sqrColors[0], 
@@ -152,7 +153,7 @@ function listen() {
   clearBtn.addEventListener('click', clear)
 
   //Listen for buttons
-  const buttons = document.querySelectorAll('button')
+  const buttons = document.querySelectorAll('.btn')
 
   buttons.forEach(button => {
     button.addEventListener('click', button => {
