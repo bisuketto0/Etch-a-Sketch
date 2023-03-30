@@ -60,6 +60,8 @@ let eraser = false
 let rainbow = false
 let shading = false
 
+let rainbowColor = 0
+
 //Draw on the first click
 function drawClick(e) {
   e.preventDefault(e)
@@ -68,8 +70,9 @@ function drawClick(e) {
   } else if (eraser) {
     e.target.style.backgroundColor = 'rgb(255, 255, 255)'
   } else if (rainbow) {
-    let rainbowColor = getRandomColor()
-    e.target.style.backgroundColor = rainbowColor
+    if (rainbowColor === 7) rainbowColor = 0
+    e.target.style.backgroundColor = getRainbowColor(rainbowColor)
+    rainbowColor++
   } else if (shading) {
     const sqrColor = e.target.style.backgroundColor
     const sqrColors = sqrColor.slice(4, sqrColor.length - 1).split(',')
@@ -91,8 +94,9 @@ function draw(e) {
     } else if (eraser) {
       e.target.style.backgroundColor = 'rgb(255, 255, 255)'
     } else if (rainbow) {
-      let rainbowColor = getRandomColor()
-      e.target.style.backgroundColor = rainbowColor
+      if (rainbowColor === 7) rainbowColor = 0
+      e.target.style.backgroundColor = getRainbowColor(rainbowColor)
+      rainbowColor++
     } else if (shading) {
       const sqrColor = e.target.style.backgroundColor
       const sqrColors = sqrColor.slice(4, sqrColor.length - 1).split(',')
@@ -107,11 +111,9 @@ function draw(e) {
   }
 }
 
-function getRandomColor() {
-  let r = Math.floor(Math.random() * 256)
-  let g = Math.floor(Math.random() * 256)
-  let b = Math.floor(Math.random() * 256)
-  return `rgb(${r}, ${g}, ${b})`
+function getRainbowColor(i) {
+  const rainbow = ['rgb(255, 0, 0)', 'rgb(255, 127, 0)', 'rgb(255, 255, 0)', 'rgb(0, 255, 0)', 'rgb(0, 0, 255)', 'rgb(75, 0, 130)', 'rgb(148, 0, 211)', ]
+  return rainbow[i]
 }
 
 function clear() {
