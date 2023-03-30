@@ -15,19 +15,7 @@ function createGrid(gridSize) {
     const gridSqr = document.createElement('div')
     gridSqr.style.backgroundColor = 'rgb(255, 255, 255)'
     gridSqr.classList.add('grid')
-    if ((i + 1) == gridSize ** 2) {
-      gridSqr.classList.add('grid-border-bottom')
-      gridSqr.classList.add('grid-border-right')
-      gridCtn.appendChild(gridSqr)
-    }  else if ((i + 1) > (gridSize ** 2 - gridSize)) {
-      gridSqr.classList.add('grid-border-bottom')
-      gridCtn.appendChild(gridSqr)
-    } else if ((i + 1) % gridSize == 0) {
-      gridSqr.classList.add('grid-border-right')
-      gridCtn.appendChild(gridSqr)
-    } else {
-      gridCtn.appendChild(gridSqr)
-    }
+    gridCtn.appendChild(gridSqr)
   }
 }
 

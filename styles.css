@@ -1,5 +1,10 @@
-* {
-  /* border: 1px solid lightcoral; */
+/* * {
+  border: 1px solid lightcoral;
+} */
+
+body {
+  background-color: #FFE9B9;
+  color: #736341;
 }
 
 .flex-container {
@@ -22,7 +27,7 @@
 }
 
 .controls {
-  width: 500px;
+  width: 512px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -37,8 +42,8 @@ button {
   height: max-content;
   max-height: 100%;
   padding: 6px 18px;
-  background-color: lightskyblue;
-  box-shadow: -3px 3px lightslategray;
+  background-color: #FFBA7A;
+  box-shadow: -3px 3px #735941;
 }
 
 #color-picker {
@@ -50,27 +55,19 @@ button {
 }
 
 .selected {
-  background-color: rgb(106, 160, 194);
-  border: 1px solid rgb(150, 150, 150);
+  background-color: #C68C57;
 }
 
 /* Grid styles */
 
 .grid-container {
+  box-shadow: #2944467c 0px 5px 15px;
   display: grid;
-  width: 500px;
-  height: 500px;
+  width: 512px;
+  height: 512px;
 }
 
-.grid {
-  border-top: 1px solid gray;
-  border-left: 1px solid grey;
-}
-
-.grid-border-bottom {
-  border-bottom: 1px solid grey;
-}
-
-.grid-border-right {
-  border-right: 1px solid grey;
-}
+/* .grid {
+  
+} 
+*/
