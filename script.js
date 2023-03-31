@@ -60,7 +60,8 @@ let eraser = false
 let rainbow = false
 let shading = false
 
-let rainbowColor = 0
+//default rainbow value
+let randomHsl = 0
 
 //Draw on the first click
 function drawClick(e) {
@@ -70,9 +71,9 @@ function drawClick(e) {
   } else if (eraser) {
     e.target.style.backgroundColor = 'rgb(255, 255, 255)'
   } else if (rainbow) {
-    if (rainbowColor === 7) rainbowColor = 0
-    e.target.style.backgroundColor = getRainbowColor(rainbowColor)
-    rainbowColor++
+    if (randomHsl === 360) randomHsl = 0
+    e.target.style.backgroundColor = HSLToRGB(randomHsl, 100, 50)
+    randomHsl++
   } else if (shading) {
     const sqrColor = e.target.style.backgroundColor
     const sqrColors = sqrColor.slice(4, sqrColor.length - 1).split(',')
@@ -94,9 +95,9 @@ function draw(e) {
     } else if (eraser) {
       e.target.style.backgroundColor = 'rgb(255, 255, 255)'
     } else if (rainbow) {
-      if (rainbowColor === 7) rainbowColor = 0
-      e.target.style.backgroundColor = getRainbowColor(rainbowColor)
-      rainbowColor++
+      if (randomHsl === 360) randomHsl = 0
+      e.target.style.backgroundColor = HSLToRGB(randomHsl, 100, 50)
+      randomHsl++
     } else if (shading) {
       const sqrColor = e.target.style.backgroundColor
       const sqrColors = sqrColor.slice(4, sqrColor.length - 1).split(',')
@@ -111,10 +112,21 @@ function draw(e) {
   }
 }
 
-function getRainbowColor(i) {
-  const rainbow = ['rgb(255, 0, 0)', 'rgb(255, 127, 0)', 'rgb(255, 255, 0)', 'rgb(0, 255, 0)', 'rgb(0, 0, 255)', 'rgb(75, 0, 130)', 'rgb(148, 0, 211)', ]
-  return rainbow[i]
-}
+//function to convert HSL to RGB
+function HSLToRGB(h, s, l) {
+  s /= 100;
+  l /= 100;
+  const k = n => (n + h / 30) % 12;
+  const a = s * Math.min(l, 1 - l);
+  const f = n =>
+    l - a * Math.max(-1, Math.min(k(n) - 3, Math.min(9 - k(n), 1)));
+  return `rgb(${255 * f(0)}, ${255 * f(8)}, ${255 * f(4)})`;
+};
+
+// function getRainbowColor(i) {
+//   const rainbow = ['rgb(255, 0, 0)', 'rgb(255, 127, 0)', 'rgb(255, 255, 0)', 'rgb(0, 255, 0)', 'rgb(0, 0, 255)', 'rgb(75, 0, 130)', 'rgb(148, 0, 211)', ]
+//   return rainbow[i]
+// }
 
 function clear() {
   const gridSquares = document.querySelectorAll('.grid')
