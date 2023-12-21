@@ -67,6 +67,10 @@ button {
   height: 512px;
 }
 
+.color {
+  color: hsl(0, 100%, 64%);
+}
+
 /* .grid {
   
 } 

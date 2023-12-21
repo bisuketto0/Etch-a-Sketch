@@ -183,25 +183,17 @@ function listen() {
       }
       //Select button
       if (pen) {
-        buttons[0].className = 'selected'
-        buttons[1].className = ''
-        buttons[2].className = ''
-        buttons[3].className = ''
+        buttons.forEach(button => button.className = '')
+        button.target.className = 'selected'
       } else if (eraser) {
-        buttons[0].className = ''
-        buttons[1].className = 'selected'
-        buttons[2].className = ''
-        buttons[3].className = ''
+        buttons.forEach(button => button.className = '')
+        button.target.className = 'selected'
       } else if (rainbow) {
-        buttons[0].className = ''
-        buttons[1].className = ''
-        buttons[2].className = 'selected'
-        buttons[3].className = ''
+        buttons.forEach(button => button.className = '')
+        button.target.className = 'selected'
       } else if (shading) {
-        buttons[0].className = ''
-        buttons[1].className = ''
-        buttons[2].className = ''
-        buttons[3].className = 'selected'
+        buttons.forEach(button => button.className = '')
+        button.target.className = 'selected'
       }
     })
   })
